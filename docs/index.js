@@ -4,7 +4,8 @@
 */
 
 function reverseString(str) {
-  // Tu solución acá  
+  // Tu solución acá
+  return str.split("").reverse().join("");
 }
 
 /*
@@ -14,6 +15,8 @@ function reverseString(str) {
 */
 function isPalindrome(str) {
   // Tu solución acá
+  if (reverseString(str) === str) return true;
+  return false;
 }
 
 /*
@@ -31,8 +34,27 @@ function isPalindrome(str) {
 
 function closestPair(arr) {
   // Tu solución acá
-}
+  //ordeno el array
+  arrsort = arr.sort(function (a, b) {
+    return a - b;
+  });
 
+  //creo las variables de referencia
+  let minDif = Infinity;
+  let eleMinDif = [];
+
+  //recorro el arreglo ordenado calculando de diferencia entre elementos consecutivos
+  for (let i = 0; i < arrsort.length - 1; i++) {
+    const currentDif = arrsort[i + 1] - arrsort[i];
+
+    // actualizamos las variables con los elementos que estan mas proximos el uno del otro
+    if (currentDif < minDif) {
+      minDif = currentDif;
+      eleMinDif = [arrsort[i], arrsort[i + 1]];
+    }
+  }
+  return eleMinDif;
+}
 
 /*
   Ejercicio 4: Calculadora - Programación Orientada a Objetos
@@ -68,11 +90,34 @@ function closestPair(arr) {
 
 class Calculator {
   // Tu solución acá
+  constructor() {}
+  add(a, b) {
+    return (this.result = a + b);
+  }
+  subtract(a, b) {
+    return (this.result = a - b);
+  }
+  multiply(a, b) {
+    return (this.result = a * b);
+  }
+  divide(a, b) {
+    if (b === 0) throw new Error("Division by zero is not allowed");
+    return (this.result = a / b);
+  }
+  getLastResult() {
+    return this.result;
+  }
 }
+
+Calculator.prototype.exponentiate = function (base, exponent) {
+  if (exponent < 0)
+    throw new Error("Exponentiation with negative exponent is not allowed");
+  return (this.result = Math.pow(base, exponent));
+};
 
 module.exports = {
   closestPair,
   isPalindrome,
   reverseString,
   Calculator,
-}
+};
