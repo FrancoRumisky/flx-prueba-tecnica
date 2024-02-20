@@ -221,7 +221,7 @@ function App() {
         <Breadcrumb>
           <Breadcrumb.Item>Usuarios</Breadcrumb.Item>
           <Breadcrumb.Item>
-            <a href="http://localhost:3000/">Lista de usuarios</a>
+            <a href="">Lista de usuarios</a>
           </Breadcrumb.Item>
         </Breadcrumb>
         <div className="top-tools-bar">
