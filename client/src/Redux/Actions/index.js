@@ -1,4 +1,4 @@
-const server = "http://localhost:4000/users";
+const server = process.env.REACT_APP_BACKEND_SERVER ||"http://localhost:4000/users";
 
 export function getUsers() {
   return function (dispatch) {
